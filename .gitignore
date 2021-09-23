@@ -1,0 +1,62 @@
+<!-- # Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# Build
+dist
+
+# supp 
+# .eslintrc
+# .prettierignore
+# .editorconfig
+# .prettierrc
+
+# TypeScript
+# types.d.ts
+# tsconfig.json
+
+# webpack
+# webpack.dev.js
+# webpack.prod.js
+
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# TypeScript v1 declaration files
+typings/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# dotenv environment variables file
+.env
+.env.test
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
