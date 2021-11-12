@@ -7,7 +7,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  entry: './src/app.js',
+  entry: './museum-dom/app.js',
   output: {
     filename: 'main.[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
@@ -22,11 +22,7 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader',
-        ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.html$/s,
@@ -40,16 +36,12 @@ module.exports = {
         ],
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              esModule: false,
-              name: 'images/[name].[contenthash].[ext]',
-            },
-          },
-        ],
+        test: /\.(?:ico|gif|jpg|png|mp4)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(woff(2)?|eot|ttf|otf|)$/i,
+        type: 'asset/resource',
       },
     ],
   },
@@ -65,7 +57,7 @@ module.exports = {
       new CssMinimizerPlugin(),
       new TerserPlugin(),
       new HtmlWebpackPlugin({
-        template: './src/index.html',
+        template: './museum-dom/index.html',
         minify: {
           removeAttributeQuotes: true,
           collapseWhitespace: true,
