@@ -7,7 +7,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  entry: './museum-dom/app.js',
+  entry: './artquiz/app.js',
   output: {
     filename: 'main.[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
@@ -21,8 +21,22 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.s[ac]ss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        test: /\.s?[ac]ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: { importLoaders: 1, sourceMap: true },
+          },
+          {
+            loader: 'postcss-loader',
+            options: { sourceMap: true }
+          },
+          {
+            loader: 'sass-loader',
+            options: { sourceMap: true }
+          }
+        ],
       },
       {
         test: /\.html$/s,
@@ -57,7 +71,7 @@ module.exports = {
       new CssMinimizerPlugin(),
       new TerserPlugin(),
       new HtmlWebpackPlugin({
-        template: './museum-dom/index.html',
+        template: './artquiz/index.html',
         minify: {
           removeAttributeQuotes: true,
           collapseWhitespace: true,
